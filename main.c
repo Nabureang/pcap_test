@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 					packet += 14; // +14 (ip)
 					ih = (struct ip_header *)packet;
 					packet += 24; // +24 (tcp)
-					th = 
+					th = (struct tcp_header *)packet;
 					printf("--------------------------------------------\n");
 					
 					printEtherAddress(eh);
