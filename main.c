@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 	/* Print its length */
 	while(1)
 	{
-		while(packet_ex = pcap_next_ex(handle, &header, &packet) >= 1)
+		if(packet_ex = pcap_next_ex(handle, &header, &packet) >= 1)
 		{
 			struct sniff_ethernet *eh;
 			struct sniff_ip *ih;
@@ -68,6 +68,11 @@ int main(int argc, char *argv[])
 			printIpAddress(ih);
 			printTcpAddress(th);
 			printData(packet, packet_length);
+		}
+		else if(packet_ex == -1 && packet_ex == -2)
+		{
+			printf("Parsing Error : pcap_next_ex\n");
+			exit(-1);
 		}	
 	}
 	pcap_close(handle);
