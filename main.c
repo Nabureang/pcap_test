@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
 			printTcpAddress(th);
 			printData(packet, packet_length);
 		}
-		else if(packet_ex == -1 && packet_ex == -2)
+		else if(packet_ex == -1 || packet_ex == -2)
 		{
 			printf("Parsing Error : pcap_next_ex\n");
 			exit(-1);
